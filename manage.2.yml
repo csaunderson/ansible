@@ -1,0 +1,14 @@
+# This is my first playbook
+
+- name: yum update all yum systems
+  hosts: yum
+  user: ansible
+  become: yes
+  become_method: sudo
+  become_user: root
+  tasks:
+  - name: update all systems
+    yum:
+      name:  '*'
+      state: latest
+

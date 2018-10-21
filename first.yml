@@ -1,0 +1,11 @@
+# This is my first playbook
+
+- name: a Simple play
+  hosts: "*"
+  user:	ansible
+  become: yes
+  become_method: sudo
+  become_user: root
+  tasks:
+  - name: first task
+    service: name=named enabled=true

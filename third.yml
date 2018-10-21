@@ -1,0 +1,11 @@
+# This is my first playbook
+
+- name: a Simple play
+  hosts: streaming.saundo.org
+  user:	ansible
+  become: yes
+  become_method: sudo
+  become_user: root
+  tasks:
+  - name: restart plex
+    service: name=plexmediaserver state=restarted

@@ -1,0 +1,16 @@
+---
+- name: deploy code
+  hosts: webservers
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  become_user: root
+  tasks:
+  - name: update nginx config
+    action: file src=nginx.conf dest=/etc/nginx/nginx.conf
+    notify: Restart nginx
+
+  - name: roll out new code
+    action: git repo=git://git.saundo.org:saundo/test--ci.git dest=/srv/myapp version=HEAD branch=master
+    notify:
+      - Restart nginx

@@ -1,0 +1,15 @@
+# This is my first playbook
+
+- name: apt-get update and upgrade on all debian systems
+  hosts: apt
+  user:	ansible
+  become: yes
+  become_method: sudo
+  become_user: root
+  tasks:
+  - name: update all systems
+    apt:
+      update_cache: yes
+      upgrade: dist
+      autoclean: yes
+      autoremove: yes

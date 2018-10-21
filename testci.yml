@@ -1,0 +1,15 @@
+# This is my first playbook
+
+- name: deploy code
+  hosts: webserver.saundo.org
+  user:	ansible
+  become: yes
+  become_method: sudo
+  become_user: root
+  tasks:
+  - name: clone repo into /srv/html
+    git:
+      repo: ssh://git@git.saundo.org/saundo/test--ci.git
+      dest: /srv/html
+      key_file: /home/ansible/.ssh/id_rsa
+      accept_hostkey: yes
